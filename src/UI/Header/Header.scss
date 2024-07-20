@@ -1,0 +1,17 @@
+.Header{
+  padding: 0 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__button{
+	font-size: 16rem;
+	width: 64rem;
+	height: 32rem;
+	background: #fff;
+  }
+
+  &__dropdown{
+	cursor: pointer;
+  }
+}

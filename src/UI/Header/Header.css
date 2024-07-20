@@ -1,0 +1,17 @@
+.Header {
+  padding: 0 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Header__button {
+  font-size: 16rem;
+  width: 64rem;
+  height: 32rem;
+  background: #fff;
+}
+.Header__dropdown {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=Header.css.map */

@@ -1,0 +1,16 @@
+.navigator {
+  height: 100vh;
+}
+.navigator__header {
+  color: #fff;
+  height: 120rem;
+  padding: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navigator__header__logo {
+  height: 50rem;
+}
+
+/*# sourceMappingURL=Navigator.css.map */
