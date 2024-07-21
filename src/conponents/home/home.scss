@@ -3,6 +3,13 @@
 .home{
   height: 82vh;
 
+  &__rightBox{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+  }
+
   &__user{
 	display: flex;
 	align-items: center;
@@ -100,5 +107,13 @@
 		@include logo;
 	  }
 	}
+  }
+
+  &__linechartContainer{
+	display: flex;
+	width: 95%;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 15rem;
   }
 }

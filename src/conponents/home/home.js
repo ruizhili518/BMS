@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Row, Col, Card, Table, Statistic} from 'antd';
 import './home.css';
-import {getOrderTotalData , getRevenueTotal} from "../../api/api";
+import {getOrderHistory, getOrderTotalData, getRevenueTotal} from "../../api/api";
 import {CloseCircleOutlined, DollarOutlined, HeartOutlined} from "@ant-design/icons";
+import MyLinechart from "../recharts/Linechart";
+import MyPiechart from "../recharts/Piechart";
 
 const Home = () => {
     const userImg = require('../../img/user.jpg');
@@ -12,7 +14,7 @@ const Home = () => {
     //     fetch('http://localhost:1337/api/order-totals')
     //         .then((res) =>{
     //             console.log(res.data);})
-    //         .catch(() =>{})
+    //         .catch((err) =>{})
     // }, []);
     // 2. axios
     const [orderData, setOrderData] = useState([]);
@@ -69,6 +71,26 @@ const Home = () => {
         });
     },[])
 
+    // Get order history data.
+    const [orderHistoryData, setOrderHistoryData] = useState([]);
+    useEffect(() => {
+        getOrderHistory().then(res => {
+            setOrderHistoryData(res.data.data.map((item) => {
+                return {
+                    key: item.id,
+                    name: item.attributes.month,
+                    iPhone14: item.attributes.iPhone14,
+                    iPhone15: item.attributes.iPhone15,
+                    iPhone15Pro: item.attributes.iPhone15Pro,
+                    iPhoneSE: item.attributes.iPhoneSE,
+                    iPadPro: item.attributes.iPadPro,
+                    iPadAir: item.attributes.iPadAir,
+                    iPad: item.attributes.iPad
+                }
+                }
+            ))
+        })
+    }, [])
     // Initialize the left bottom table columns.
     const columns = [
         {
@@ -111,11 +133,11 @@ const Home = () => {
                     <Table columns={columns} dataSource={orderData} size={'small'} pagination={{defaultPageSize: 4}}/>
                 </Card>
             </Col>
-            <Col span={16}> {/*Right side: Revenue cards.*/}
+            <Col span={16} className='home__rightBox'> {/*Right side: Revenue cards, charts.*/}
                 <div className='home__revenueContainer'>
                     {revenueData.map((item) => {
                         return (
-                            <Card bordered={false} className='home__revenueContainer__card' id={item.id} hoverable>
+                            <Card className='home__revenueContainer__card' key={item.id} hoverable>
                                 <Statistic
                                     title={item.title}
                                     value={item.val}
@@ -129,6 +151,12 @@ const Home = () => {
                             </Card>)
                     })}
                 </div>
+                <Card hoverable className='home__linechartContainer'>
+                    <MyLinechart data={orderHistoryData}/>
+                </Card>
+                <Card>
+                    <MyPiechart data={orderData}/>
+                </Card>
             </Col>
         </Row>
     );

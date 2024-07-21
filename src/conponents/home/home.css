@@ -1,6 +1,12 @@
 .home {
   height: 82vh;
 }
+.home__rightBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 .home__user {
   display: flex;
   align-items: center;
@@ -97,6 +103,13 @@
 }
 .home__revenueContainer__card__logoContainer--3__logo, .home__revenueContainer__card__logoContainer--6__logo {
   font-size: 40rem;
+}
+.home__linechartContainer {
+  display: flex;
+  width: 95%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15rem;
 }
 
 /*# sourceMappingURL=home.css.map */

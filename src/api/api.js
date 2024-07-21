@@ -13,3 +13,10 @@ export const getRevenueTotal = () => {
         method: 'get'
     })
 }
+
+export const getOrderHistory = () => {
+    return http.request({
+        url: '/order-histories',
+        method: 'get'
+    })
+}
