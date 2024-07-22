@@ -110,6 +110,31 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 15rem;
+  position: relative;
+}
+.home__linechartContainer__title {
+  position: absolute;
+  display: inline-block;
+  width: 30rem;
+  left: 20rem;
+  top: 30rem;
+}
+.home__piechartContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 95%;
+  height: 300rem;
+  position: relative;
+}
+.home__piechartContainer__title--1 {
+  position: absolute;
+  left: 15rem;
+  bottom: 20rem;
+}
+.home__piechartContainer__title--2 {
+  position: absolute;
+  right: 250rem;
+  bottom: 20rem;
 }
 
 /*# sourceMappingURL=home.css.map */

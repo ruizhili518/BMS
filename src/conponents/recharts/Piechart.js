@@ -1,5 +1,5 @@
-import React from 'react';
-import { PieChart, Pie, Sector, Cell} from 'recharts';
+import React, { useCallback, useState} from 'react';
+import { PieChart, Pie, Sector} from 'recharts';
 
 const renderActiveShape = (props) => {
     const RADIAN = Math.PI / 180;
@@ -39,7 +39,7 @@ const renderActiveShape = (props) => {
             />
             <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
             <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text>
+            <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`Total: ${value}`}</text>
             <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
                 {`(Rate ${(percent * 100).toFixed(2)}%)`}
             </text>
@@ -48,31 +48,38 @@ const renderActiveShape = (props) => {
 };
 
 const MyPiechart = (props) => {
-    const data = props.data.map(item => {
-        return {
-            name: item.name,
-            value: item.total
+    const [activeIndex, setActiveIndex] = useState(0);
+    const onPieEnter = useCallback(
+        (_, index) => {
+            setActiveIndex(index);
+        },
+        [setActiveIndex]
+    );
+
+    const myData = props.data.map(item => {
+        return{
+            name : item.name,
+            value : item.total
         }
     })
-
-    const [activeIndex, setActiveIndex] = React.useState(0);
-
     return (
-        <PieChart width={400} height={400}>
+        <PieChart width={400} height={200} margin={0}>
             <Pie
                 activeIndex={activeIndex}
                 activeShape={renderActiveShape}
-                data={data}
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={80}
-                fill="#8884d8"
+                data={myData}
+                cx={195}
+                cy={100}
+                innerRadius={43}
+                outerRadius={55}
+                fill="#ADEEE2FF"
                 dataKey="value"
-                onMouseEnter={setActiveIndex}
+                onMouseEnter={onPieEnter}
             />
         </PieChart>
     );
 };
 
 export default MyPiechart;
+
+

@@ -115,5 +115,34 @@
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 15rem;
+	position: relative;
+
+	&__title{
+	  position: absolute;
+	  display: inline-block;
+	  width: 30rem;
+	  left: 20rem;
+	  top: 30rem;
+	}
+  }
+
+  &__piechartContainer{
+	display: flex;
+	justify-content: space-around;
+	width: 95%;
+	height: 300rem;
+	position: relative;
+
+	&__title--1{
+	  position: absolute;
+	  left: 15rem;
+	  bottom: 20rem
+	}
+
+	&__title--2{
+	  position: absolute;
+	  right:250rem;
+	  bottom: 20rem
+	}
   }
 }

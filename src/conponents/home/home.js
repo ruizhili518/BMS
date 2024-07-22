@@ -5,6 +5,7 @@ import {getOrderHistory, getOrderTotalData, getRevenueTotal} from "../../api/api
 import {CloseCircleOutlined, DollarOutlined, HeartOutlined} from "@ant-design/icons";
 import MyLinechart from "../recharts/Linechart";
 import MyPiechart from "../recharts/Piechart";
+import MyRadarChart from "../recharts/Radarchart";
 
 const Home = () => {
     const userImg = require('../../img/user.jpg');
@@ -87,10 +88,11 @@ const Home = () => {
                     iPadAir: item.attributes.iPadAir,
                     iPad: item.attributes.iPad
                 }
-                }
+            }
             ))
         })
     }, [])
+
     // Initialize the left bottom table columns.
     const columns = [
         {
@@ -152,11 +154,15 @@ const Home = () => {
                     })}
                 </div>
                 <Card hoverable className='home__linechartContainer'>
+                    <h3 className='home__linechartContainer__title'>Monthly sales trend</h3>
                     <MyLinechart data={orderHistoryData}/>
                 </Card>
-                <Card>
+                <div className='home__piechartContainer'>
+                    <h3 className='home__piechartContainer__title--1'>Total Sales Distribution</h3>
                     <MyPiechart data={orderData}/>
-                </Card>
+                    <h3 className='home__piechartContainer__title--2'>Today's Sales Radar</h3>
+                    <MyRadarChart data={orderData}/>
+                </div>
             </Col>
         </Row>
     );

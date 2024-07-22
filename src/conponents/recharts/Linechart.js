@@ -13,22 +13,21 @@ const MyLinechart = (props) => {
     ]
 
     return (
-
-            <LineChart
-                width={720}
-                height={150}
-                data={props.data}
-            >
-                <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                {config.map(item=> {
-                    return(<Line type="monotone" dataKey={item.key} stroke={item.stroke} strokeWidth={2} key={item.key}/>)
-                })}
-            </LineChart>
-
+        <LineChart
+            width={650}
+            height={160}
+            margin={{left:20}}
+            data={props.data}
+        >
+            <CartesianGrid strokeDasharray="3 3"/>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip/>
+            <Legend />
+            {config.map(item=> {
+                return(<Line type="monotone" dataKey={item.key} stroke={item.stroke} strokeWidth={2} key={item.key}/>)
+            })}
+        </LineChart>
     );
 };
 
