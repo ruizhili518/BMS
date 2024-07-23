@@ -160,7 +160,7 @@ const Home = () => {
                 <div className='home__piechartContainer'>
                     <h3 className='home__piechartContainer__title--1'>Total Sales Distribution</h3>
                     <MyPiechart data={orderData}/>
-                    <h3 className='home__piechartContainer__title--2'>Today's Sales Radar</h3>
+                    <h3 className='home__piechartContainer__title--2'>Today's Sales</h3>
                     <MyRadarChart data={orderData}/>
                 </div>
             </Col>

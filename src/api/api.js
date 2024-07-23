@@ -20,3 +20,25 @@ export const getOrderHistory = () => {
         method: 'get'
     })
 }
+
+export const getStore = () => {
+    return http.request({
+        url: '/stores',
+        method: 'get'
+    })
+}
+
+export const deleteStoreById = (id) => {
+    return http.request({
+        url: `/stores/${id}`,
+        method: 'delete'
+    })
+}
+
+export const addStore = (data) => {
+    return http.request({
+        url: '/stores',
+        method: 'post',
+        data: {data}
+    })
+}

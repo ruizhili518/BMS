@@ -9,7 +9,6 @@ const MyRadarChart = (props) => {
             fullMark: 50
         }
     })
-    console.log(myData);
     return (
         <RadarChart cx={130} cy={100} width={300} height={200} data={myData}>
             <PolarGrid />

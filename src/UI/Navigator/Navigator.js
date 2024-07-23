@@ -4,7 +4,7 @@ import {Layout, Menu} from "antd";
 import MenuConfig from '../../config/index'
 import * as Icon from "@ant-design/icons";
 import './Navigator.css'
-
+import { useNavigate } from "react-router-dom";
 
 const Navigator = (props) => {
 // Manipulate menu config data.
@@ -28,6 +28,12 @@ const Navigator = (props) => {
         return child;
     })
 
+    const navigate = useNavigate();
+
+    const routeHandler = (e) => {
+        navigate(e.key)
+    }
+
     const Sider = Layout.Sider;
     return (
         <Sider trigger={null} collapsible collapsed={props.collapsed} className="navigator">
@@ -42,6 +48,7 @@ const Navigator = (props) => {
                 mode="inline"
                 defaultSelectedKeys={['1']}
                 items={menuItems}
+                onClick={routeHandler}
             />
         </Sider>
     );

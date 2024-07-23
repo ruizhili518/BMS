@@ -2,7 +2,7 @@ import {createBrowserRouter, Navigate} from "react-router-dom";
 import Main from "../conponents/Main";
 import Home from "../conponents/home/home";
 import Item from "../conponents/item/item";
-import User from "../conponents/user/user";
+import Store from "../conponents/store/store";
 import PageOne from "../conponents/other/PageOne";
 import PageTwo from "../conponents/other/PageTwo";
 
@@ -25,8 +25,8 @@ const routes = [
                 Component: Item
             },
             {
-                path:'user',
-                Component: User
+                path:'store',
+                Component: Store
             },
             {
                 path:'other',

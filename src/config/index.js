@@ -10,15 +10,15 @@ export default [
         path:'/item',
         name:'item',
         label:'Item',
-        icon:'ShopOutlined',
+        icon:'AppleOutlined',
         url:'/item/item'
     },
     {
-        path:'/user',
-        name:'user',
-        label:'User',
-        icon:'UserOutlined',
-        url:'/user/user'
+        path:'/store',
+        name:'store',
+        label:'Store',
+        icon:'ShopOutlined',
+        url:'/store/store'
     },
     {
         path:'/other',
