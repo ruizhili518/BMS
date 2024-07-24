@@ -3,8 +3,8 @@ import Main from "../conponents/Main";
 import Home from "../conponents/home/home";
 import Item from "../conponents/item/item";
 import Store from "../conponents/store/store";
-import PageOne from "../conponents/other/PageOne";
-import PageTwo from "../conponents/other/PageTwo";
+import Profile from "../conponents/profile/Profile";
+import Login from "../conponents/login/Login";
 
 const routes = [
     {
@@ -29,21 +29,13 @@ const routes = [
                 Component: Store
             },
             {
-                path:'other',
-                children:[
-                    {
-                        path:'pageone',
-                        Component: PageOne
-                    },
-                    {
-                        path:'pagetwo',
-                        Component: PageTwo
-                    }
-                ]
+                path:'profile',
+                Component: Profile
             }
-
-
         ]
+    },{
+        path:'/login',
+        Component: Login,
     }
 ]
 

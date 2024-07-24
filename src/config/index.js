@@ -21,22 +21,9 @@ export default [
         url:'/store/store'
     },
     {
-        path:'/other',
-        label:'Other',
+        path:'/profile',
+        label:'Profile',
         icon:'SettingOutlined',
-        children: [
-            {
-                path:'/other/PageOne',
-                name:'page1',
-                label:'Page 1',
-                icon:'SettingOutlined',
-            },
-            {
-                path:'/other/PageTwo',
-                name:'page2',
-                label:'Page 2',
-                icon:'SettingOutlined',
-            }
-        ]
+        url:'/profile/Profile'
     }
 ]

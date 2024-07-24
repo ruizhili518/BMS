@@ -16,7 +16,7 @@ const MyLinechart = (props) => {
         <LineChart
             width={650}
             height={160}
-            margin={{left:20,right:25}}
+            margin={{left:20,right:25,top:8}}
             data={props.data}
         >
             <CartesianGrid strokeDasharray="3 3"/>

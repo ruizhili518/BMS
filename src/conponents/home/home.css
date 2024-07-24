@@ -111,6 +111,7 @@
   align-items: center;
   margin-bottom: 15rem;
   position: relative;
+  z-index: 999;
 }
 .home__linechartContainer__title {
   position: absolute;

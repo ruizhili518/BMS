@@ -4,11 +4,15 @@ import {MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
 import './Header.css';
 import {collapsedHandler} from "../../store/reducers/tab";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 const Header = (props) => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const signOut = () => {
-
+        //Delete token
+        localStorage.removeItem("token");
+        navigate("/login");
     }
     const items = [
         {
@@ -20,7 +24,7 @@ const Header = (props) => {
         {
             key: '2',
             danger: true,
-            label: (<a target="_blank" rel="noopener noreferrer" href='https://google.com' onClick={signOut}>
+            label: (<a target="_blank" rel="noopener noreferrer" onClick={signOut}>
                 Sign out
             </a>)
         },

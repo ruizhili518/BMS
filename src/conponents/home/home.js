@@ -10,14 +10,6 @@ import MyRadarChart from "../recharts/Radarchart";
 const Home = () => {
     const userImg = require('../../img/user.jpg');
     // Get order total data from API while initialize the page.
-    // 1. fetch
-    // useEffect(() => {
-    //     fetch('http://localhost:1337/api/order-totals')
-    //         .then((res) =>{
-    //             console.log(res.data);})
-    //         .catch((err) =>{})
-    // }, []);
-    // 2. axios
     const [orderData, setOrderData] = useState([]);
     useEffect(() => {
         getOrderTotalData().then(res => {

@@ -5,6 +5,7 @@ import {Layout, theme} from "antd";
 import Navigator from "../UI/Navigator/Navigator";
 import {useSelector} from "react-redux";
 import {Outlet} from "react-router-dom";
+import RouterAuth from "../router/routerAuth";
 
 const Main = () => {
     let collapsed = useSelector((state) => state.tab.isCollapsed);
@@ -15,6 +16,7 @@ const Main = () => {
 
     const Content = Layout.Content;
     return (
+        <RouterAuth>
         <Layout>
             <Navigator collapsed={collapsed}/>
             <Layout style={{height: '100%'}}>
@@ -31,6 +33,7 @@ const Main = () => {
                 </Content>
             </Layout>
         </Layout>
+        </RouterAuth>
     );
 };
 

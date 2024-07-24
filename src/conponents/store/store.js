@@ -1,34 +1,66 @@
 import React, {useEffect, useState} from 'react';
 import './store.css'
-import {Button, Form, Input, message, Modal, Popconfirm, Space, Table} from "antd";
-import {addStore, deleteStoreById, getStore} from "../../api/api";
+import {Button, Form, Input, message, Popconfirm, Space, Table} from "antd";
+import {addStore, deleteStoreById, getStore, updateStore} from "../../api/api";
+import ModalForm from "../../UI/Modal/ModalForm";
 
 const Store = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-    const showModal = () => {
-        setIsModalOpen(true);
+    const showAddModal = () => {
+        setIsAddModalOpen(true);
     };
 
-    const handleOk = async () => {
+    const handleAddOk = async () => {
         const inputData = myForm.getFieldsValue();
         try {
             await addStore(inputData)
             const newData = await getData().then();
             setOriStoreData(newData);
             setStoreData(newData);
-            setIsModalOpen(false);
+            setIsAddModalOpen(false);
+            message.success('Added successfully.');
         }catch(err) {
             message.error('Please check your input!');
         }
+        myForm.resetFields();
     };
 
-    const handleCancel = () => {
-        setIsModalOpen(false);
+    const handleAddCancel = () => {
+        setIsAddModalOpen(false);
+        myForm.resetFields();
     };
 
-    const editHandler = () => {
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [curId,setCurId] = useState(null);
 
+    const showEditModal = (curData) => {
+        //Show the modal and return the data to the form. Make a deep copy of the data and manipulate the copy in case the user want to roll back.
+        setIsEditModalOpen(true);
+        const copy = JSON.parse(JSON.stringify(curData));
+        delete copy.key;
+        setCurId(curData.key);
+        myForm.setFieldsValue(copy);
+    };
+
+    const handleEditCancel = () => {
+        setIsEditModalOpen(false);
+        myForm.resetFields();
+    };
+
+    const editHandler = async () => {
+        const inputData = myForm.getFieldsValue();
+        try{
+            await updateStore(curId, inputData);
+            const newData = await getData().then();
+            setOriStoreData(newData);
+            setStoreData(newData);
+            setIsEditModalOpen(false);
+            message.success('Edit successfully.');
+        }catch(e) {
+            message.error('Please check your input!');
+        }
+        myForm.resetFields();
     }
 
     const searchHandler = (e) => {
@@ -38,8 +70,8 @@ const Store = () => {
             setStoreData(oriStoreData)
         }
     }
-    // Get the store data from API.
 
+    // Get the store data from API.
     const [storeData, setStoreData] = useState([]);
     const [oriStoreData, setOriStoreData] = useState([]);
 
@@ -73,6 +105,7 @@ const Store = () => {
         setStoreData(newData);
     };
 
+    // Initialize the columns name of the table (with buttons).
     const columns = [
         {
             title: 'Name',
@@ -109,8 +142,11 @@ const Store = () => {
             title: 'Action',
             key: 'action',
             render: (data) => (
+                <>
                 <Space size="middle">
-                    <Button type={"primary"} style={{width: '90rem'}} onClick={editHandler}>Edit</Button>
+                    <Button type={"primary"} style={{width: '90rem'}} onClick={() => showEditModal(data)}>Edit</Button>
+                    <ModalForm title={"Edit store information."} isModalOpen={isEditModalOpen}
+                               onOk={editHandler} onCancel={handleEditCancel} form={myForm}/>
                     <Popconfirm
                         title="Delete the task"
                         description="Are you sure to delete this task?"
@@ -121,75 +157,19 @@ const Store = () => {
                         <Button danger type={"primary"} style={{width: '90rem'}}>Delete</Button>
                     </Popconfirm>
                 </Space>
+            </>
             ),
         },
     ];
 
-    let [myForm] = Form.useForm();
+    const [myForm] = Form.useForm();
 
     return (
         <div className="user">
             <div className="user__topBar">
-                <Button type="primary" onClick={showModal}>+ Add</Button>
-                <Modal title="Add new store information." open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                    <Form form={myForm} name="new" labelCol={{span: 6,}} wrapperCol={{span: 14,}}
-                        style={{maxWidth: 600,}} initialValues={{remember: false}}
-                        autoComplete="off" onFinish={handleOk}>
-                        <Form.Item label="Name" name="name"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Store name is required!',
-                                },
-                            ]}
-                        ><Input />
-                        </Form.Item>
-                        <Form.Item
-                            label="Address"
-                            name="address"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Address is required!',
-                                },
-                            ]}
-                        ><Input />
-                        </Form.Item>
-                        <Form.Item
-                            label="Open at"
-                            name="open"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Open time is required!',
-                                },
-                            ]}
-                        ><Input />
-                        </Form.Item>
-                        <Form.Item
-                            label="Close at"
-                            name="close"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Close time is required!',
-                                },
-                            ]}
-                        ><Input />
-                        </Form.Item>
-                        <Form.Item
-                            label="Phone number"
-                            name="number"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Phone number is required!',
-                                },
-                            ]}
-                        ><Input />
-                        </Form.Item>
-                    </Form>
-                </Modal>
+                <Button type="primary" onClick={showAddModal}>+ Add</Button>
+                <ModalForm title={"Add new store information."} isModalOpen={isAddModalOpen}
+                           onOk={handleAddOk} onCancel={handleAddCancel} form={myForm}/>
                 <Form layout='inline' onFinish={searchHandler}>
                     <Form.Item name='name'>
                         <Input placeholder="Store name" />
