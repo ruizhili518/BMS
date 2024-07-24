@@ -1,0 +1,39 @@
+.item{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  &__header{
+	margin-bottom: 25rem;
+  }
+
+  &__container{
+	display: flex;
+	width: 1580rem;
+	justify-content: center;
+	flex-wrap: wrap;
+  }
+
+  &__card{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 350rem;
+	height: 350rem;
+	margin: 15rem 20rem;
+
+	&__img{
+	  width: 100%;
+	  height: 200rem;
+	}
+
+	&__info{
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	}
+  }
+}

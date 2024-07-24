@@ -1,0 +1,36 @@
+.item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.item__header {
+  margin-bottom: 25rem;
+}
+.item__container {
+  display: flex;
+  width: 1580rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.item__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350rem;
+  height: 350rem;
+  margin: 15rem 20rem;
+}
+.item__card__img {
+  width: 100%;
+  height: 200rem;
+}
+.item__card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*# sourceMappingURL=item.css.map */
