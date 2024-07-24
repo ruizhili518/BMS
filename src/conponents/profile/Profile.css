@@ -1,3 +1,62 @@
-
+.profile {
+  display: flex;
+  flex-direction: column;
+}
+.profile__card1 {
+  width: 82vw;
+}
+.profile__card1__container {
+  display: flex;
+  align-items: center;
+}
+.profile__card1__container__img {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+.profile__card1__container__info {
+  margin-left: 60rem;
+  width: 600rem;
+  height: 200rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.profile__card1__container__info__data {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20rem;
+  padding: 10rem;
+  margin-top: 20rem;
+}
+.profile__card1__container__detail {
+  display: flex;
+  justify-content: start;
+  height: 200rem;
+  width: 45%;
+  padding: 10rem 30rem;
+  margin-left: 50rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+.profile__card1__container__detail__timeline {
+  padding-top: 25rem;
+}
+.profile__card1__container__detail__button {
+  align-self: flex-end;
+  margin-left: 60rem;
+}
+.profile__card2 {
+  width: 82vw;
+}
+.profile__card2__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile__card2__container__progress {
+  padding-left: 20rem;
+  width: 42vw;
+}
 
 /*# sourceMappingURL=Profile.css.map */

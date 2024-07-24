@@ -14,10 +14,13 @@ const Header = (props) => {
         localStorage.removeItem("token");
         navigate("/login");
     }
+    const toProfile = () => {
+        navigate("/profile");
+    }
     const items = [
         {
             key: '1',
-            label: (<a target="_blank" rel="noopener noreferrer" href='https://google.com'>
+            label: (<a target="_blank" rel="noopener noreferrer" onClick={toProfile}>
                 Personal profile
             </a>)
         },

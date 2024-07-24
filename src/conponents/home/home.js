@@ -6,6 +6,7 @@ import {CloseCircleOutlined, DollarOutlined, HeartOutlined} from "@ant-design/ic
 import MyLinechart from "../recharts/Linechart";
 import MyPiechart from "../recharts/Piechart";
 import MyRadarChart from "../recharts/Radarchart";
+import {useNavigate} from "react-router-dom";
 
 const Home = () => {
     const userImg = require('../../img/user.jpg');
@@ -104,11 +105,11 @@ const Home = () => {
             dataIndex: 'total',
         }
     ]
-
+    const navigate = useNavigate();
     return (
         <Row className="home">
             <Col span={8}> {/*Left side: User and Order table.*/}
-                <Card hoverable style={{padding:0 , marginBottom: '20rem'}}> {/*Top left: User.*/}
+                <Card hoverable style={{padding:0 , marginBottom: '20rem'}} onClick={() => navigate('/profile')}> {/*Top left: User.*/}
                     <div className='home__user'>
                         <img src={userImg} alt="user" className='home__user__avatar'/>
                         <div className='home__user__info'>
