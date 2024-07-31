@@ -1,4 +1,6 @@
 # This is a Backstage Management System!
+If you want to test how it works, remember to go to my BMS-Server to get that code as well.
+All the APIs that I used are based on that server&db project.
 
 ## Available Scripts
 
