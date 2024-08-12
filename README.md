@@ -2,6 +2,11 @@
 If you want to test how it works, remember to go to my BMS-Server to get that code as well.
 All the APIs that I used are based on that server&db project.
 
+The initial account information for testing:
+  Account: admin
+  PW: adminadmin
+  E-mail: admin@gmail.com
+
 ## Available Scripts
 
 In the project directory, you can run:
