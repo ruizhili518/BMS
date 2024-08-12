@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:1337/api';
+const baseURL = 'https://bms-server-roan.vercel.app/';
 
 //Create a class to make axios instance and send request.
 
