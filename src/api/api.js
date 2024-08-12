@@ -60,7 +60,7 @@ export const getItem = () => {
 }
 
 export const loginCheck = (data) => {
-    return axios.post('http://localhost:1337/api/auth/local',{
+    return axios.post('https://bms-server-roan.vercel.app/api/auth/local',{
         username: data.username,
         password: data.password,
         identifier: data.email
